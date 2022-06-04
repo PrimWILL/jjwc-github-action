@@ -16,7 +16,6 @@ jobs:
   
   second_job:
     name: 'Second Job'
-    needs: first_job
 
     runs-on: ubuntu-latest
 
@@ -27,8 +26,10 @@ jobs:
           echo "Lorem Ipsum"
   
   third_job:
-    name: 'Thrid Job'
-    needs: second_job
+    name: 'Third Job'
+    needs:
+      - first_job 
+      - second_job
 
     runs-on: ubuntu-latest
 
