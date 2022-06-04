@@ -63,7 +63,7 @@ jobs:
         - name: Check environment variable 2
           shell: bash
           env:
-            STEP_LEVEL_1: "This environment variable comes from the step level 2"
+            STEP_LEVEL_2: "This environment variable comes from the step level 2"
           run: |
             echo "job level: $JOB_LEVEL_1"
             echo "job level: $JOB_LEVEL_2"
