@@ -1,30 +1,34 @@
-name: 'My First Github Actions'
+name: 'My First GitHub Actions'
 
-on: push # push 이벤트에 반응
+on: push
 
-env: 
+env:
   PRESET_VALUE: "This is the value preset"
 
 jobs:
   first_job:
     name: 'First Job'
-    runs-on: ubuntu-latest # 가장 최신 버전의 우분투에서 깃헙 액션이 동작
-    
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Set environment variable 1
+      - name: Set output value 1
+        id: first
         shell: bash
-        run: |
-          echo "VAR1='This is the value from the step 1'" >> $GITHUB_ENV
-      
-      - name: Set environment variable 2
+        run: | 
+          value1='This is the first value'
+
+          echo "::set-output name=first_value::$value1"
+
+      - name: Set output value 2
+        id: second
         shell: pwsh
-        run: |
-          echo "VAR2='This is the value from the step 2'" | `
-            Out-File -FilePath $env:GITHUB_ENV -Encoding UTF-8 -Append
-        
-      -name: Check environment variables
+        run: | 
+          $value2='This is the second value'
+
+          echo "::set-output name=second_value::$value2"
+      
+      - name: Check output values
         shell: bash
         run: |
-          echo "preset value: ${{ env.PRESET_VALUE }}"
-          echo "value1: $VAR1"
-          echo "value2: $VAR2"
+          echo "first value: ${{ steps.first.outputs.first_value }} "
+          echo "second value: ${{ steps.second.outputs.second_value }} "
