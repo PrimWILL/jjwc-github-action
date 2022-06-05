@@ -24,8 +24,8 @@ jobs:
         with:
           name: ${{ inputs.artifact_name }}
           path: artifacts/api
-
-      - name: Zip artifact 
+      
+      - name: Zip artifact
         shell: bash
         run: |
           pushd artifacts/api
@@ -33,7 +33,7 @@ jobs:
           popd
 
           mv artifacts/api/${{ inputs.artifact_name }}.zip artifacts/${{ inputs.artifact_name }}.zip
-
+      
       - name: Release artifact to Github
         uses: marvinpinto/action-automatic-releases@latest
         with:
