@@ -14,9 +14,9 @@ jobs:
     with:
       artifact_name: apiapp
 
-  call_release:
-    uses: ./.github/workflows/cd.yaml
-    with:
-      title: ${{ github.event.inputs.title }}
-      artifact_name: apiapp
-    secrets: inherit
+  # call_release:
+  #   uses: ./.github/workflows/cd.yaml
+  #   with:
+  #     title: ${{ github.event.inputs.title }}
+  #     artifact_name: apiapp
+  #   secrets: inherit
