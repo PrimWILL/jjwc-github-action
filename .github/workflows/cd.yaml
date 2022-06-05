@@ -29,7 +29,7 @@ jobs:
         shell: bash
         run: |
           pushd artifacts/api
-          zip -11 -r ${{ inputs.artifact_name }}.zip
+          zip -qq -r ${{ inputs.artifact_name }}.zip .
           popd
 
           mv artifacts/api/${{ inputs.artifact_name }}.zip artifacts/${{ inputs.artifact_name }}.zip
